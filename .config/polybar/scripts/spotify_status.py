@@ -1,5 +1,11 @@
 #!/bin/python
 
+###############################################################################
+
+# THIS SCRIPT I TAKE FROM https://github.com/Jvanrhijn/polybar-spotify
+# Thank you Jvanrhijn
+
+###############################################################################
 import sys
 import dbus
 import argparse
