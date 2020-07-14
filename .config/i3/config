@@ -1,0 +1,260 @@
+set $mod Mod4
+font pango:Monospace 8
+
+floating_modifier $mod
+
+##########################################
+#               Autoload                 #
+##########################################
+
+exec_always--no-startup-id xsetroot -cursor_name left_ptr &
+exec_always --no-startup-id feh --bg-scale /usr/share/backgrounds/galaxy.jpg
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+exec_always --no-startup-id picom --experimental-backends --config ~/.config/picom/picom.conf
+exec_always --no-startup-id setxkbmap -layout us,ru -option 'grp:caps_toggle'
+exec_always --no-startup-id xautolock -locker i3lock-fancy -time 10
+exec_always --no-startup-id dunst
+#exec_always --no-startup-id ~/.config/polybar/scripts/updates.sh 
+
+# Apps
+exec firefox-developer-edition
+exec code-insiders
+#exec nemo
+exec spotify
+
+# Tray
+exec killall pa-applet
+exec pa-applet &
+exec_always caffeine 
+exec_always blueman-applet
+exec_always nm-applet
+#exec_always pamac-tray-appindicator
+
+#exec systemctl restart bluetooth
+exec pacmd set-card-profile 2 a2dp_sink
+##########################################
+#               Default i3               #
+##########################################
+
+# start a terminal
+bindsym $mod+Return exec alacritty #i3-sensible-terminal
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+#bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+#bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+set $ws1  Browser
+set $ws2  Code
+set $ws3  Music
+set $ws4  Files
+set $ws5  5: 
+set $ws6  6: 
+set $ws7  7: 
+set $ws8  8: 
+set $ws9  9: 
+set $ws10 10: 
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape of same shortcut
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+bindsym $mod+r mode "resize"
+
+#########################################
+#               My binds                #
+#########################################
+
+bindsym $mod+space exec rofi -show run
+
+#bindsym $mod+space exec dmenu_run -nb '#1f2023' -sf '#3b4252' -sb '#5294e2' -nf '#5294e2'
+
+bindsym $mod+Shift+f exec i3lock-fancy
+
+bindsym $mod+Shift+KP_1 exec i3-sensible-terminal -e ranger
+
+bindsym --release $mod+Shift+s exec ~/.config/i3/scripts/screenshot.sh
+
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle # mute sound
+
+# Media player controls
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPause exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+##########################################
+#              Appearance                #
+##########################################
+
+# Theme colors
+# class                   border  backgr. text    indic.   child_border
+  client.focused          #555555 #555555 #ffffff #2e9ef4  #ada8a8
+  client.focused_inactive #2F3D44 #2F3D44 #AD69AF #454948
+  client.unfocused        #9c9c9c #2F3D44 #AD69AF #454948
+  client.urgent           #CB4B16 #FDF6E3 #AD69AF #268BD2
+  client.placeholder      #000000 #0c0c0c #ffffff #000000 
+
+  client.background       #2B2C2B
+
+
+for_window [class=".*"] border pixel 2
+
+for_window [class="firefox*"] move to workspace 1
+for_window [class="Code - Insiders"] move to workspace 2
+for_window [class="Spotify*"] move to workspace 3
+for_window [class="Nemo*"] move to workspace 4
+for_window [class="qBittorrent"] move to workspace 5
+
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
+
+
+smart_borders on
+smart_gaps on
+
+gaps inner 11
+
+set $mode_gaps Gaps: [O]uter, [I]nner
+set $mode_gaps_outer Outer: [-|0|+]
+set $mode_gaps_inner Inner: [-|0|+]
+bindsym $mod+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+        bindsym o      mode "$mode_gaps_outer"
+        bindsym i      mode "$mode_gaps_inner"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_inner" {
+        bindsym plus  gaps inner current plus 5
+        bindsym minus gaps inner current minus 5
+        bindsym 0     gaps inner current set 0
+
+        bindsym Shift+plus  gaps inner all plus 5
+        bindsym Shift+minus gaps inner all minus 5
+        bindsym Shift+0     gaps inner all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_outer" {
+        bindsym plus  gaps outer current plus 5
+        bindsym minus gaps outer current minus 5
+        bindsym 0     gaps outer current set 0
+
+        bindsym Shift+plus  gaps outer all plus 5
+        bindsym Shift+minus gaps outer all minus 5
+        bindsym Shift+0     gaps outer all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+

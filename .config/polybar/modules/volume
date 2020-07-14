@@ -1,0 +1,23 @@
+[module/volume]
+type = internal/pulseaudio
+
+sink = bluez_sink.30_23_BC_94_D3_15.a2dp_sink
+use-ui-max = true
+interval = 5
+
+format-volume = <ramp-volume> <label-volume>
+
+label-volume = %percentage%%
+
+label-muted =  Mute
+label-muted-foreground = #666
+
+; Only applies if <ramp-volume> is used
+ramp-volume-0 = %{F#e91e63}%{T5}%{T-}%{F-}
+ramp-volume-1 = %{F#e91e63}%{T5}%{T-}%{F-}
+ramp-volume-2 = %{F#e91e63}%{T5}%{T-}%{F-}
+
+; Right and Middle click (unreleased)
+click-right = /home/$USER/.config/rofi/scripts/volume.sh &
+; click-middle = 
+

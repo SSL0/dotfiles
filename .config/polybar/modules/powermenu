@@ -1,0 +1,6 @@
+[module/powermenu]
+type = custom/text
+content = 
+content-foreground = ${colors.red}
+
+click-left = .config/rofi/scripts/powermenu.sh &

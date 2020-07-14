@@ -1,0 +1,9 @@
+[module/layout]
+type = internal/xkeyboard
+
+format-prefix = 
+format-prefix-padding-right = 2
+format-prefix-foreground = ${colors.teal}
+format = <label-layout>
+#format-background = ${colors.foreground-alt}
+#format-padding = 2

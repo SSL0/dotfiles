@@ -1,0 +1,11 @@
+[module/updates]
+type = custom/script
+exec = "/home/$USER/.config/polybar/scripts/updates.sh"
+
+format-prefix = 
+format-prefix-padding-right = 2
+format-prefix-foreground = ${colors.red}
+format = <label>
+#format-padding = 2
+
+interval = 3600

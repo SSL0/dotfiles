@@ -1,0 +1,12 @@
+[module/ram]
+type = internal/memory
+interval = 3
+
+format-prefix = 
+format-prefix-padding-right = 1
+format = <label>
+format-background = ${colors.background}
+format-foreground = ${colors.yellow}
+#format-padding = 2
+
+label = %percentage_used:2%%/%gb_total%

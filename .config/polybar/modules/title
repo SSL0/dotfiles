@@ -1,0 +1,12 @@
+[module/title]
+type = internal/xwindow
+
+label = %title%
+label-underline = ${colors.foreground-alt}
+label-maxlen = 20
+
+format-prefix = Window:
+format-prefix-padding = 1 
+format-prefix-foreground = ${colors.foreground-alt}
+format = <label>
+format-foreground = #b0b5bf

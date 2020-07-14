@@ -1,0 +1,10 @@
+[module/weather]
+type = custom/script
+exec = "/home/$USER/.config/polybar/scripts/weather.sh"
+format = %{T6} <label> °C
+format-foreground = ${colors.blue}
+#format-padding = 2
+
+format-suffix = 
+format-suffix-padding-left = 1
+interval = 120

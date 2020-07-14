@@ -1,0 +1,6 @@
+[module/network]
+type = custom/script
+exec = /home/$USER/.config/polybar/scripts/wlan.sh
+
+format = <label>
+click-left = /home/$USER/.config/rofi/scripts/network.sh &

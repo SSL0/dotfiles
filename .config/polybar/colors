@@ -1,0 +1,17 @@
+[colors]
+background 		= #1B1B1B
+background-alt 	= #5294e2
+foreground 		= #e0e0e0
+foreground-alt 	= #5294e2
+alert 			= #FF0000
+waring 			= #FFFF00
+spotify         = #1ed761
+
+red     =	#e53935
+orange  = 	#ff9800
+yellow  = 	#ffeb3b
+green   = 	#4caf50
+purple 	= 	#b48ead
+blue    =	#42a5f5
+cyan 	=	#8fbcbb
+teal    =   #009688

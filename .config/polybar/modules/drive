@@ -1,0 +1,10 @@
+[module/drive]
+type = custom/script
+exec = "/home/$USER/.config/polybar/scripts/drive.sh"
+
+format-prefix = 
+format-prefix-padding-right = 2
+format-prefix-foreground = ${colors.yellow}
+
+format = <label>
+#format-padding = 2

@@ -1,0 +1,41 @@
+[module/bspwm]
+type = internal/bspwm
+
+show-all = true
+pin-workspaces = true
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = true
+
+ws-icon-0 = 1;%{F#ff9800}%{F-}
+ws-icon-1 = 2;%{F#4dd0e1}%{F-}
+ws-icon-2 = 3;%{F#e91e63}%{F-}
+ws-icon-3 = 4;%{F#ffd54f}%{F-}
+ws-icon-4 = 5;%{F#66bb6a}%{F-}
+ws-icon-5 = 6;%{F#f44336}%{F-}
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+ws-icon-8 = 9;
+ws-icon-9 = 10;
+
+
+label-mode = %mode%
+label-mode-padding = 1
+label-mode-foreground = ${colors.foreground}
+label-mode-background = ${colors.foreground-alt}
+
+label-occupied = %icon% %{T6} %name%%{T-} 
+label-occupied-foreground = ${colors.foreground}
+label-occupied-background = ${colors.background}
+label-occupied-padding = 1
+
+label-empty =
+label-empty-padding = 1
+
+label-urgent = %icon% %{T6} %name%%{T-} 
+label-urgent-padding = 1
+
+label-focused = %icon% %{T6} %name%%{T-}
+label-focused-foreground = ${colors.foreground}
+label-focused-underline = ${colors.blue}
+label-focused-padding = 1

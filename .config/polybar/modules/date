@@ -1,0 +1,14 @@
+[module/date]
+type = internal/date
+interval = 1
+
+time = %H:%M:%S 
+data = 
+date-alt = %A, %d %B %Y
+time-alt = %H:%M:%S
+
+label = %date% %time%
+format = <label>
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+#format-padding = 2

@@ -1,0 +1,9 @@
+[module/bluetooth]
+type = custom/script
+exec = .config/polybar/scripts/bluetooth.sh
+
+label = %output% 
+
+click-left  = /home/$USER/.config/rofi/scripts/bluetooth.sh &
+
+interval = 5
