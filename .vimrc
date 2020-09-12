@@ -1,21 +1,15 @@
 call plug#begin('~/.vim/plugged')
     Plug 'powerline/powerline'                      " For status bar
     Plug 'vim-airline/vim-airline'                  " Status bar
-    Plug 'vim-airline/vim-airline-themes'           " Status bar theme
-    Plug 'neoclide/coc.nvim', {'branch': 'release'} " Intellisense
     Plug 'preservim/nerdtree'                       " File manager
-    Plug 'ryanoasis/vim-devicons'                   " Nerd icons
     Plug 'preservim/nerdcommenter'                  " Comment code
-    Plug 'jiangmiao/auto-pairs'                     " Auto pair
-    Plug 'vhdirk/vim-cmake'                         " CMake
-    Plug 'tpope/vim-fugitive'
-    Plug 'chrisbra/Colorizer'
      
     " Themes
     Plug 'morhetz/gruvbox'
     Plug 'mhartington/oceanic-next'
     Plug 'dracula/vim', {'as': 'dracula'}
     Plug 'joshdick/onedark.vim'
+    
     " Markdown
     Plug 'godlygeek/tabular'
     Plug 'plasticboy/vim-markdown'
@@ -24,7 +18,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'iamcco/markdown-preview.vim'
     
     " IDE-like
-    " Plug 'dense-analysis/ale' " Lints
 call plug#end()
 " Vim settings
 syntax on
@@ -54,9 +47,6 @@ set noshowmode
 set t_Co=256
 set bg=dark
 
-let g:dracula_italic = 0
-
-colorscheme onedark
 highlight Normal ctermbg=NONE
 highlight nonText ctermbg=NONE
 
@@ -74,10 +64,6 @@ map <C-t> :tabnew<Enter>
 
 map <F8> :NERDTreeToggle %<CR>
 
-map <F11> :ALEFindReferences<Enter>
-map <F12> :ALEGoToDefinition<Enter>
-map e] :ALENext<Enter>
-map [e :ALEPrevious<Enter>
 " Splits
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -87,30 +73,64 @@ nnoremap <C-H> <C-W><C-H>
 " Extension settings
 set nofoldenable
 
-let g:airline_theme='deus'
-
-" Coc
-
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-inoremap <silent><expr> <c-space> coc#refresh()
-
-" Ale
-let g:ale_c_build_dir_names = [ 'build', 'release', 'debug' ]
-let g:ale_cpp_clangtidy_builddir = 'build'
-
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 
-let g:colorizer_auto_color = 1
+" Airline
 
+let g:Powerline_symbols = 'unicode'
+
+let g:airline_powerline_fonts=1
+let g:gruvbox_contrast_dark="meduim"
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.crypt = '🔒'
+let g:airline_symbols.linenr = '☰'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.maxlinenr = '㏑'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.spell = 'Ꞩ'
+let g:airline_symbols.notexists = 'Ɇ'
+let g:airline_symbols.whitespace = 'Ξ'
+
+" powerline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = '☰'
+let g:airline_symbols.maxlinenr = ''
+
+" airline extensions
+
+let g:airline#extensions#xkblayout#enabled = 1
+let g:airline#extensions#xkblayout#short_codes = {'Russian-Phonetic': 'RU', 'ABC': 'EN'}
+
+let g:XkbSwitchLib = '/lib/libxkbswitch.so'
+
+" airline tabline
+let g:airline#extensions#tabline#enabled = 1
+
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = ''
+" Markdown
+nmap <silent> <F12> <Plug>MarkdownPreview        " for normal mode
+imap <silent> <F12> <Plug>MarkdownPreview        " for insert mode
+nmap <silent> <F11> <Plug>StopMarkdownPreview    " for normal mode
+imap <silent> <F11> <Plug>StopMarkdownPreview    " for insert mode
 filetype plugin indent on

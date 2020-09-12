@@ -10,20 +10,19 @@ floating_modifier $mod
 exec_always--no-startup-id xsetroot -cursor_name left_ptr &
 exec_always --no-startup-id feh --bg-scale /usr/share/backgrounds/galaxy.jpg
 exec_always --no-startup-id ~/.config/polybar/launch.sh
-exec_always --no-startup-id picom --experimental-backends --config ~/.config/picom/picom.conf
+exec_always --no-startup-id picom --experimental-backends
 exec_always --no-startup-id setxkbmap -layout us,ru -option 'grp:caps_toggle'
 exec_always --no-startup-id xautolock -locker i3lock-fancy -time 10
 exec_always --no-startup-id dunst
-#exec_always --no-startup-id ~/.config/polybar/scripts/updates.sh 
-
+exec_always --no-startup-id xmodmap ~/.Xmodmap
 # Apps
-exec firefox-developer-edition
+exec firefox-beta
 exec code-insiders
 #exec nemo
 exec spotify
 
 # Tray
-exec killall pa-applet
+#exec killall pa-applet
 exec pa-applet &
 exec_always caffeine 
 exec_always blueman-applet
@@ -37,7 +36,7 @@ exec pacmd set-card-profile 2 a2dp_sink
 ##########################################
 
 # start a terminal
-bindsym $mod+Return exec alacritty #i3-sensible-terminal
+bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -66,10 +65,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-#bindsym $mod+h split h
+bindsym $mod+Mod1+h split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+Mod1+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen
@@ -201,7 +200,7 @@ bindsym XF86AudioPrev exec playerctl previous
   client.background       #2B2C2B
 
 
-for_window [class=".*"] border pixel 2
+for_window [class=".*"] border pixel 1 #2
 
 for_window [class="firefox*"] move to workspace 1
 for_window [class="Code - Insiders"] move to workspace 2
@@ -220,7 +219,7 @@ for_window [window_type="menu"] floating enable
 smart_borders on
 smart_gaps on
 
-gaps inner 11
+gaps inner 0
 
 set $mode_gaps Gaps: [O]uter, [I]nner
 set $mode_gaps_outer Outer: [-|0|+]
@@ -258,3 +257,7 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
+
+bar {
+        status_command i3status
+}
