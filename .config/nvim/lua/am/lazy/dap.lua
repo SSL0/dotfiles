@@ -120,6 +120,8 @@ return {
                 { desc = "Debug: toggle scopes ui" })
             vim.keymap.set("n", "<leader>dc", function() toggle_debug_ui("console") end,
                 { desc = "Debug: toggle console ui" })
+            vim.keymap.set("n", "<leader>dq", function() dap.terminate() end,
+                { desc = "Debug: terminate debugger" })
 
             vim.api.nvim_create_autocmd("BufEnter", {
                 group = "DapGroup",
@@ -169,7 +171,6 @@ return {
             require("mason-nvim-dap").setup({
                 ensure_installed = {
                     "delve",
-
                 },
                 automatic_installation = true,
 

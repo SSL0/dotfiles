@@ -1,6 +1,6 @@
 function ColorMyPencils(color)
 	-- color = color or "rose-pine-moon"
-	color = color or "gruber-darker"
+	color = color or "rose-pine"
 	vim.cmd.colorscheme(color)
 
 	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
@@ -79,7 +79,9 @@ return {
         end
     },
     { "blazkowolf/gruber-darker.nvim" },
-    { "martinsione/darkplus.nvim" },
+    { "nickkadutskyi/jb.nvim" },
+    -- { "martinsione/darkplus.nvim" },
+    { "LunarVim/darkplus.nvim" },
     {
         "rose-pine/neovim",
         name = "rose-pine",

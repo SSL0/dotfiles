@@ -1,7 +1,7 @@
 vim.opt.guicursor = ""
 
 vim.opt.nu = true
--- vim.opt.relativenumber = true
+vim.opt.relativenumber = false
 
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
@@ -30,6 +30,9 @@ vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "0"
 
-vim.opt.termguicolors = false  -- Отключает true-color (24-bit) в терминале
--- vim.opt.t_Co = "256"           -- Устанавливает 256-цветный режим (если поддерживается)
-vim.opt.background = "dark"    -- или "light", в зависимости от темы
+vim.opt.background = "dark"
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- optionally enable 24-bit colour
+vim.opt.termguicolors = true
